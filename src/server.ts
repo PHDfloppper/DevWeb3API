@@ -63,6 +63,8 @@ app.use((
   return res.status(status).json({ error: err.message });
 });
 
+console.log(EnvVars.MongoDb_URI);
+console.log(process.env.MONGODB_URI);
 
 // **** Front-End Content **** //
 
