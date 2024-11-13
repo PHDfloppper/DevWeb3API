@@ -48,13 +48,13 @@ async function getAll(_: IReq, res: IRes) {
 async function getByName(req: IReq<{ nom: string }>, res: IRes) {
     try {
       const { nom } = req.params; // Récupère le nom du joueur depuis les paramètres
-      const joueur = await InvenaireService.getByName(nom); // Appel au service
+      const joueurs = await InvenaireService.getByName(nom); // Appel au service
   
-      if (!joueur) {
+      if (!joueurs) {
         return res.status(HttpStatusCodes.NOT_FOUND).json({ error: 'Joueur non trouvé' });
       }
   
-      return res.status(HttpStatusCodes.OK).json({ joueur });
+      return res.status(HttpStatusCodes.OK).json({ joueurs });
     } catch (error) {
       console.error('Erreur lors de la récupération du joueur par nom:', error);
       return res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Erreur lors de la récupération du joueur' });
@@ -67,12 +67,12 @@ async function getByName(req: IReq<{ nom: string }>, res: IRes) {
 async function add(req: IReq, res: IRes) {
   try {
     // Valide req.body
-    const joueur = req.body;
-    if (!isJoueur(joueur)) {
+    const joueurs = req.body;
+    if (!isJoueur(joueurs)) {
       return res.status(HttpStatusCodes.BAD_REQUEST).json({ error: 'Données de joueur invalides' });
     }
     // Appel correct de la méthode de service
-    await InvenaireService.add(joueur);
+    await InvenaireService.add(joueurs);
     return res.status(HttpStatusCodes.CREATED).end();
   } catch (error) {
     console.error('Erreur lors de l\'ajout du joueur:', error);
@@ -83,17 +83,17 @@ async function add(req: IReq, res: IRes) {
 /**
  * Mise à jour d'un joueur.
  */
-async function update(req: IReq<{ joueur: IJoueur }>, res: IRes) {
+async function update(req: IReq<{ joueurs: IJoueur }>, res: IRes) {
   try {
-    let { joueur } = req.body;
+    let { joueurs } = req.body;
 
     // Vérifie que req.body.joueur est bien de type IJoueur
-    if (!isJoueur(joueur) || !joueur._id) {
+    if (!isJoueur(joueurs) || !joueurs._id) {
       return res.status(HttpStatusCodes.BAD_REQUEST).json({ error: 'Données de joueur invalides ou ID manquant' });
     }
 
     // Appel correct de la méthode de service
-    const updatedJoueur = await InvenaireService.update(joueur);
+    const updatedJoueur = await InvenaireService.update(joueurs);
     return res.status(HttpStatusCodes.OK).json({ joueur: updatedJoueur });
   } catch (error) {
     console.error('Erreur lors de la mise à jour du joueur:', error);
