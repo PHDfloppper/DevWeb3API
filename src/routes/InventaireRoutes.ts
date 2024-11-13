@@ -35,7 +35,7 @@ function extractId(params: any, key: string): string | null {
 async function getAll(_: IReq, res: IRes) {
   try {
     const joueurs = await InvenaireService.getAll();  // Appel au service de joueurs
-    return res.status(HttpStatusCodes.OK).json({ joueurs });
+    return res.status(HttpStatusCodes.OK).json(joueurs);
   } catch (error) {
     console.error('Erreur lors de la récupération des joueurs:', error);
     return res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Erreur lors de la récupération des joueurs' });
@@ -54,7 +54,7 @@ async function getByName(req: IReq<{ nom: string }>, res: IRes) {
         return res.status(HttpStatusCodes.NOT_FOUND).json({ error: 'Joueur non trouvé' });
       }
   
-      return res.status(HttpStatusCodes.OK).json({ joueurs });
+      return res.status(HttpStatusCodes.OK).json(joueurs);
     } catch (error) {
       console.error('Erreur lors de la récupération du joueur par nom:', error);
       return res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Erreur lors de la récupération du joueur' });
