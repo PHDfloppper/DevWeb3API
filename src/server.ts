@@ -1,7 +1,7 @@
 /**
  * Setup express server.
  */
-
+import './pre-start'; 
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import path from 'path';
@@ -18,12 +18,17 @@ import EnvVars from '@src/common/EnvVars';
 import HttpStatusCodes from '@src/common/HttpStatusCodes';
 import { RouteError } from '@src/common/classes';
 import { NodeEnvs } from '@src/common/misc';
+import { connect } from 'mongoose';
+import mongoose from 'mongoose';
+import server from './server';
 
 
 // **** Variables **** //
 
 const app = express();
-
+const cors = require('cors');
+const SERVER_START_MSG = ('Express server started on port: ' + 
+  EnvVars.Port.toString());
 
 // **** Setup **** //
 
@@ -41,6 +46,12 @@ if (EnvVars.NodeEnv === NodeEnvs.Dev.valueOf()) {
 if (EnvVars.NodeEnv === NodeEnvs.Production.valueOf()) {
   app.use(helmet());
 }
+
+app.use(cors({
+  origin: 'http://localhost:5173', // Frontend React
+  methods: ['GET'], // Méthodes autorisées
+  allowedHeaders: ['Content-Type'] // En-têtes autorisés
+}));
 
 // Add APIs, must be after middleware
 app.use(Paths.Base, BaseRouter);
@@ -81,11 +92,14 @@ app.get('/', (_: Request, res: Response) => {
   return res.redirect('/api/joueur/all');
 });
 
-// Redirect to login if not logged in.
+//Redirect to login if not logged in.
 // app.get('/users', (_: Request, res: Response) => {
 //   return res.sendFile('users.html', { root: viewsDir });
 // });
 
+connect(EnvVars.MongoDb_URI)
+  .then(() => server.listen(EnvVars.Port, () => logger.info(SERVER_START_MSG)))
+  .catch((err) => logger.err(err, true));
 
 // **** Export default **** //
 
