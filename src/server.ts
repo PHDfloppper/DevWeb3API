@@ -48,7 +48,7 @@ if (EnvVars.NodeEnv === NodeEnvs.Production.valueOf()) {
 }
 
 app.use(cors({
-  origin: 'http://localhost:5173', // Frontend React
+  origin: 'https://olidevwebreact.netlify.app', // Frontend React
   methods: ['GET'], // Méthodes autorisées
   allowedHeaders: ['Content-Type'] // En-têtes autorisés
 }));
