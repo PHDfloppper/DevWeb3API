@@ -33,32 +33,32 @@ export interface IJoueur extends Document {
 }
 
 const blocSchema = new Schema<IBloc>({
-  type: { type: String, required: true },
-  quantite: { type: Number, required: true }
+  type: { type: String },
+  quantite: { type: Number }
 });
 
 const outilSchema = new Schema<IOutil>({
-  type: { type: String, required: true },
-  materiau: { type: String, required: true },
-  durabilite: { type: Number, required: true }
+  type: { type: String },
+  materiau: { type: String },
+  durabilite: { type: Number }
 });
 
 const succesSchema = new Schema<ISucces>({
   nom: { type: String, required: true },
-  description: { type: String, required: true },
-  dateObtention: { type: Date, required: true }
+  description: { type: String },
+  dateObtention: { type: Date }
 });
 
 const inventaireSchema = new Schema<IInventaire>({
-  blocs: { type: [blocSchema], required: true },
-  outils: { type: [outilSchema], required: true }
+  blocs: { type: [blocSchema] },
+  outils: { type: [outilSchema]}
 });
 
 const joueurSchema = new Schema<IJoueur>({
   nomJoueur: { type: String, required: true },
   versionMinecraft: { type: String, required: true },
-  inventaire: { type: inventaireSchema, required: true },
-  succes: { type: [succesSchema], required: true },
+  inventaire: { type: inventaireSchema },
+  succes: { type: [succesSchema] },
   heuresJeu: { type: Number, required: true },
   modeHardcore: { type: Boolean, required: true }
 });
