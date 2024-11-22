@@ -49,7 +49,7 @@ if (EnvVars.NodeEnv === NodeEnvs.Production.valueOf()) {
 
 app.use(cors({
   origin: 'https://olidevwebreact.netlify.app', // Frontend React
-  methods: ['GET'], // Méthodes autorisées
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Méthodes autorisées
   allowedHeaders: ['Content-Type'] // En-têtes autorisés
 }));
 
@@ -97,9 +97,9 @@ app.get('/', (_: Request, res: Response) => {
 //   return res.sendFile('users.html', { root: viewsDir });
 // });
 
-connect(EnvVars.MongoDb_URI)
-  .then(() => server.listen(EnvVars.Port, () => logger.info(SERVER_START_MSG)))
-  .catch((err) => logger.err(err, true));
+// connect(EnvVars.MongoDb_URI)
+//   .then(() => server.listen(EnvVars.Port, () => logger.info(SERVER_START_MSG)))
+//   .catch((err) => logger.err(err, true));
 
 // **** Export default **** //
 

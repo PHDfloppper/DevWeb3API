@@ -10,8 +10,8 @@ import server from './server';
 const SERVER_START_MSG = ('Express server started on port: ' + 
   EnvVars.Port.toString());
 
-console.log(EnvVars.MongoDb_URI);
-console.log(process.env.MONGODB_URI);
+// console.log(EnvVars.MongoDb_URI);
+// console.log(process.env.MONGODB_URI);
   
 // Connecter à la base de données
 // connect(EnvVars.MongoDb_URI)
