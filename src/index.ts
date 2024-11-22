@@ -13,7 +13,7 @@ const SERVER_START_MSG = ('Express server started on port: ' +
 // console.log(EnvVars.MongoDb_URI);
 // console.log(process.env.MONGODB_URI);
   
-// Connecter à la base de données
+//Connecter à la base de données
 // connect(EnvVars.MongoDb_URI)
 //   .then(() => server.listen(EnvVars.Port, () => logger.info(SERVER_START_MSG)))
 //   .catch((err) => logger.err(err, true));
