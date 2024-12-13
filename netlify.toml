@@ -6,7 +6,6 @@
     node_bundler = "esbuild"
     # Ajout de la documentation de l'interface logicielle
     included_files = ["env/development.env", "./functions/index.html"]
-    node_bundler = "esbuild" 
 [[redirects]]
     force = true
     from = "/*"
