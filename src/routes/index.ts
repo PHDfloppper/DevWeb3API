@@ -27,7 +27,10 @@ apiRouter.use(Paths.Users.Base, userRouter);
 const joueurRouter = Router()
 joueurRouter.get(Paths.Joueur.Get, InventaireRoutes.getAll);
 joueurRouter.get(Paths.Joueur.GetByName, InventaireRoutes.getByName);
+joueurRouter.get(Paths.Joueur.GetById, InventaireRoutes.getById);
+joueurRouter.get(Paths.Joueur.GetByVersion, InventaireRoutes.getByVersion);
 joueurRouter.post(Paths.Joueur.Add, InventaireRoutes.add);
+joueurRouter.put(Paths.Joueur.Update, InventaireRoutes.update);
 joueurRouter.delete(Paths.Joueur.Delete, InventaireRoutes.delete);
 
 apiRouter.use(Paths.Joueur.Base, joueurRouter)

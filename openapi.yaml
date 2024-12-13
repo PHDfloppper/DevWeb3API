@@ -1,0 +1,260 @@
+openapi: 3.0.0
+info:
+  title: API des Inventaires de Joueurs
+  description: Cette API permet de gérer les joueurs et leurs inventaires dans un
+    jeu.
+  contact:
+    name: Support Technique
+    url: https://www.example.com
+    email: support@example.com
+  version: 1.0.0
+servers:
+- url: http://localhost:3000
+  description: Serveur local
+paths:
+  /joueurs:
+    get:
+      tags:
+      - Joueurs
+      summary: Récupérer tous les joueurs
+      operationId: getAllJoueurs
+      responses:
+        "200":
+          description: Liste des joueurs récupérés avec succès
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IJoueur'
+        "500":
+          description: Erreur du serveur
+    post:
+      tags:
+      - Joueurs
+      summary: Ajouter un nouveau joueur
+      operationId: addJoueur
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IJoueur'
+        required: true
+      responses:
+        "201":
+          description: Joueur ajouté avec succès
+        "400":
+          description: Requête mal formée
+        "500":
+          description: Erreur du serveur
+  /joueurs/{id}:
+    get:
+      tags:
+      - Joueurs
+      summary: Récupérer un joueur par son ID
+      operationId: getJoueurById
+      parameters:
+      - name: id
+        in: path
+        description: L'ID du joueur
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Détails du joueur récupérés avec succès
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IJoueur'
+        "404":
+          description: Joueur non trouvé
+        "500":
+          description: Erreur du serveur
+    put:
+      tags:
+      - Joueurs
+      summary: Mettre à jour un joueur
+      operationId: updateJoueur
+      parameters:
+      - name: id
+        in: path
+        description: L'ID du joueur
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IJoueur'
+        required: true
+      responses:
+        "200":
+          description: Joueur mis à jour avec succès
+        "400":
+          description: Requête mal formée
+        "404":
+          description: Joueur non trouvé
+        "500":
+          description: Erreur du serveur
+    delete:
+      tags:
+      - Joueurs
+      summary: Supprimer un joueur
+      operationId: deleteJoueur
+      parameters:
+      - name: id
+        in: path
+        description: L'ID du joueur
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Joueur supprimé avec succès
+        "404":
+          description: Joueur non trouvé
+        "500":
+          description: Erreur du serveur
+  /joueurs/{nomJoueur}:
+    get:
+      tags:
+      - Joueurs
+      summary: Récupérer un joueur par son nom
+      operationId: getJoueurByName
+      parameters:
+      - name: nomJoueur
+        in: path
+        description: Le nom du joueur
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Détails du joueur récupérés avec succès
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IJoueur'
+        "404":
+          description: Joueur non trouvé
+        "500":
+          description: Erreur du serveur
+  /joueurs/inventaire/{id}:
+    get:
+      tags:
+      - Inventaire
+      summary: Récupérer l'inventaire d'un joueur
+      operationId: getInventaire
+      parameters:
+      - name: id
+        in: path
+        description: L'ID du joueur
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Inventaire du joueur récupéré avec succès
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IInventaire'
+        "404":
+          description: Joueur non trouvé
+        "500":
+          description: Erreur du serveur
+components:
+  schemas:
+    IJoueur:
+      required:
+      - heuresJeu
+      - modeHardcore
+      - nomJoueur
+      - versionMinecraft
+      type: object
+      properties:
+        nomJoueur:
+          type: string
+          description: Le nom du joueur
+        versionMinecraft:
+          type: string
+          description: La version de Minecraft que le joueur utilise
+        inventaire:
+          $ref: '#/components/schemas/IInventaire'
+        succes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ISucces'
+        heuresJeu:
+          type: number
+          description: Le nombre d'heures jouées par le joueur
+        modeHardcore:
+          type: boolean
+          description: Indique si le joueur est en mode Hardcore
+    IInventaire:
+      type: object
+      properties:
+        blocs:
+          type: array
+          items:
+            $ref: '#/components/schemas/IBloc'
+        outils:
+          type: array
+          items:
+            $ref: '#/components/schemas/IOutil'
+    IBloc:
+      required:
+      - quantite
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+          description: Le type de bloc
+        quantite:
+          type: number
+          description: La quantité de ce bloc
+    IOutil:
+      required:
+      - durabilite
+      - materiau
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+          description: Le type de l'outil
+        materiau:
+          type: string
+          description: Le matériau de l'outil
+        durabilite:
+          type: number
+          description: La durabilité de l'outil
+    ISucces:
+      required:
+      - dateObtention
+      - nom
+      type: object
+      properties:
+        nom:
+          type: string
+          description: Le nom du succès
+        description:
+          type: string
+          description: Une description du succès
+        dateObtention:
+          type: string
+          description: La date d'obtention du succès
+          format: date

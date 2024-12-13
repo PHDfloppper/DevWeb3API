@@ -8,6 +8,7 @@ import { IReq, IRes } from './common/types';
 
 // Fonction de validation pour IJoueur
 function isJoueur(obj: any): obj is IJoueur {
+  console.log('Validation des données :', obj);  // Log des données pour vérifier ce qui est envoyé
   return (
     obj &&
     typeof obj === 'object' &&
@@ -23,7 +24,7 @@ function isJoueur(obj: any): obj is IJoueur {
     typeof obj.modeHardcore === 'boolean'
   );
 }
-
+//vérification de l'id
 function extractId(params: any, key: string): string | null {
   const value = params[key];
   return typeof value === 'string' && /^[0-9a-fA-F]{24}$/.test(value) ? value : null;
@@ -62,6 +63,49 @@ async function getByName(req: IReq<{ nom: string }>, res: IRes) {
   }
 
 /**
+ * Récupérer un joueur par la version du jeu
+ */
+async function getByVersion(req: IReq<{ version: number }>, res: IRes) {
+  try {
+    const { version } = req.params; // Récupère le nom du joueur depuis les paramètres
+    const joueurs = await InvenaireService.getByVersion(version); // Appel au service
+
+    if (!joueurs || joueurs.length === 0) {
+      return res.status(HttpStatusCodes.NOT_FOUND).json({ error: 'Aucun joueur trouvé pour cette version.' });
+    }
+
+    return res.status(HttpStatusCodes.OK).json(joueurs);
+  } catch (error) {
+    console.error('Erreur lors de la récupération des joueurs par version :', error);
+    return res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Erreur lors de la récupération des joueurs.' });
+  }
+}
+
+/**
+ * Récupérer un joueur par son ID.
+ */
+async function getById(req: IReq<{ id: string }>, res: IRes) {
+  try {
+    const id = extractId(req.params, 'id');
+
+    if (!id) {
+      return res.status(HttpStatusCodes.BAD_REQUEST).json({ error: 'ID de joueur invalide' });
+    }
+
+    const joueur = await InvenaireService.getById(id); // Appel au service `getById`
+
+    if (!joueur) {
+      return res.status(HttpStatusCodes.NOT_FOUND).json({ error: 'Joueur non trouvé' });
+    }
+
+    return res.status(HttpStatusCodes.OK).json(joueur);
+  } catch (error) {
+    console.error('Erreur lors de la récupération du joueur par ID:', error);
+    return res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Erreur lors de la récupération du joueur' });
+  }
+}
+
+/**
  * Ajoute un joueur.
  */
 async function add(req: IReq, res: IRes) {
@@ -83,21 +127,33 @@ async function add(req: IReq, res: IRes) {
 /**
  * Mise à jour d'un joueur.
  */
-async function update(req: IReq<{ joueurs: IJoueur }>, res: IRes) {
+async function update(req: IReq<{ id: string }>, res: IRes) {
   try {
-    let { joueurs } = req.body;
+    const id = extractId(req.params, 'id');
 
-    // Vérifie que req.body.joueur est bien de type IJoueur
-    if (!isJoueur(joueurs) || !joueurs._id) {
-      return res.status(HttpStatusCodes.BAD_REQUEST).json({ error: 'Données de joueur invalides ou ID manquant' });
+    // Vérification si l'ID est valide
+    if (!id) {
+      return res.status(HttpStatusCodes.BAD_REQUEST).json({ error: 'ID invalide dans l\'URL' });
     }
 
-    // Appel correct de la méthode de service
-    const updatedJoueur = await InvenaireService.update(joueurs);
+    const joueurs = req.body; // Assurez-vous que req.body est de type IJoueur
+
+    // Vérification que les données du joueur sont valides
+    if (!isJoueur(joueurs)) {
+      return res.status(HttpStatusCodes.BAD_REQUEST).json({ error: 'Données de joueur invalides' });
+    }
+
+    if (joueurs._id) {
+      return res.status(HttpStatusCodes.BAD_REQUEST).json({ error: 'il ne doit pas y avoir de id dans les donnes' });
+    }
+
+    // Appel de la méthode de service pour mettre à jour le joueur
+    const updatedJoueur = await InvenaireService.update(joueurs, id);
+
     return res.status(HttpStatusCodes.OK).json({ joueur: updatedJoueur });
   } catch (error) {
     console.error('Erreur lors de la mise à jour du joueur:', error);
-    return res.status(HttpStatusCodes.BAD_REQUEST).json({ error: 'Erreur lors de la mise à jour du joueur' });
+    return res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Erreur interne du serveur lors de la mise à jour du joueur' });
   }
 }
 
@@ -125,6 +181,8 @@ async function delete_(req: IReq<{ id: string }>, res: IRes) {
 export default {
   getAll,
   getByName,
+  getByVersion,
+  getById,
   add,
   update,
   delete: delete_,

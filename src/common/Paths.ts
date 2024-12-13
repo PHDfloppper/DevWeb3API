@@ -1,8 +1,3 @@
-/**
- * Express router paths go here.
- */
-
-
 export default {
   Base: '/api',
   Users: {
@@ -12,12 +7,14 @@ export default {
     Update: '/update',
     Delete: '/delete/:id',
   },
-  Joueur:{
+  Joueur: {
     Base: '/joueur',
     Get: '/all',
-    GetByName: '/:nom',
+    GetById: '/:id',           // Recherche par ID
+    GetByName: '/nom/:nom',
+    GetByVersion: '/version/:version',  // Recherche par version
     Add: '/add',
-    Update: '/update',
+    Update: '/update/:id',
     Delete: '/delete/:id',
-  }
+  },
 } as const;

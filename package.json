@@ -44,7 +44,9 @@
     "mongoose": "^8.6.3",
     "morgan": "^1.10.0",
     "serverless-http": "^3.2.0",
-    "ts-command-line-args": "^2.5.1"
+    "swagger-ui-express": "^5.0.1",
+    "ts-command-line-args": "^2.5.1",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "@jazim/mock-mongoose": "^1.0.1",

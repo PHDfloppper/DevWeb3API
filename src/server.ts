@@ -21,6 +21,8 @@ import { NodeEnvs } from '@src/common/misc';
 import { connect } from 'mongoose';
 import mongoose from 'mongoose';
 import server from './server';
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
 
 
 // **** Variables **** //
@@ -31,6 +33,12 @@ const SERVER_START_MSG = ('Express server started on port: ' +
   EnvVars.Port.toString());
 
 // **** Setup **** //
+
+// Charger la documentation swagger en YAML
+const swaggerDocument = YAML.load('./openapi.yaml');
+
+// Rendre la documentation disponible sur l'endpoint "/api-docs"
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Basic middleware
 app.use(express.json());
@@ -48,10 +56,10 @@ if (EnvVars.NodeEnv === NodeEnvs.Production.valueOf()) {
 }
 
 app.use(cors({
-  origin: 'https://olidevwebreact.netlify.app', // Frontend React
-  //origin: 'http://localhost:5173/joueur',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Méthodes autorisées
-  allowedHeaders: ['Content-Type'] // En-têtes autorisés
+  origin: ['http://localhost:5173', 'https://olidevwebreact.netlify.app'], // Liste des origines autorisées
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Méthodes HTTP autorisées
+  allowedHeaders: ['Content-Type', 'Authorization'], // En-têtes autorisés
+  credentials: true, // Autoriser l'envoi de cookies et d'en-têtes d'authentification
 }));
 
 // Add APIs, must be after middleware
@@ -75,9 +83,17 @@ app.use((
   return res.status(status).json({ error: err.message });
 });
 
-// console.log(EnvVars.MongoDb_URI);
-// console.log(process.env.MONGODB_URI);
+// rend disponible la documentation de l'interface logicielle
+app.get('/api-docs/', async (req, res) => {
+  res.set('Content-Security-Policy', 'script-src blob:');
+  res.set('Content-Security-Policy', 'worker-src blob:');
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
+// redirige vers api-docs
+app.get('/', (req, res) => {
+  res.redirect('/api-docs');
+});
 // **** Front-End Content **** //
 
 // Set views directory (html)

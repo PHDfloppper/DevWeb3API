@@ -14,7 +14,7 @@ async function persists(id: string): Promise<boolean> {
 /**
  * Récupérer tous les joueurs.
  */
-async function getAll(): Promise<IJoueur[]> {  // Correction ici
+async function getAll(): Promise<IJoueur[]> {
   return JoueurModel.find().exec();
 }
 
@@ -22,17 +22,24 @@ async function getAll(): Promise<IJoueur[]> {  // Correction ici
  * Récupérer un joueur par son nom.
  */
 async function getByName(nom: string): Promise<IJoueur | null> {
-    return JoueurModel.findOne({ nomJoueur: nom }).exec(); // Assurez-vous que "nomJoueur" est le bon champ dans votre modèle
-  }
+  return JoueurModel.findOne({ nomJoueur: nom }).exec();
+}
+
+async function getByVersion(version: number): Promise<IJoueur[]> {
+  return JoueurModel.find({ versionMinecraft: version }).exec();
+}
+
+async function getById(id: string): Promise<IJoueur | null> {
+  return JoueurModel.findById(id).exec();
+}
 
 /**
  * Ajouter un joueur.
  */
 async function add(joueur: IJoueur): Promise<void> {
-  // Assigner un nouvel ID (ou laisser MongoDB le gérer)
-  if (!joueur._id) {
-    joueur._id = getRandomInt().toString();
-  }
+  // if (!joueur._id) {
+  //   joueur._id = getRandomInt().toString();
+  // }
 
   const nouveauJoueur = new JoueurModel(joueur);
   await nouveauJoueur.save();
@@ -41,8 +48,8 @@ async function add(joueur: IJoueur): Promise<void> {
 /**
  * Mettre à jour un joueur.
  */
-async function update(joueur: IJoueur): Promise<void> {
-  await JoueurModel.findByIdAndUpdate(joueur._id, joueur, { new: true }).exec();
+async function update(joueur: IJoueur, id: string): Promise<void> {
+  await JoueurModel.findByIdAndUpdate(id, joueur).exec();
 }
 
 /**
@@ -57,6 +64,9 @@ async function delete_(id: string): Promise<void> {
 export default {
   persists,
   getAll,
+  getByName,
+  getByVersion,
+  getById,
   add,
   update,
   delete: delete_,

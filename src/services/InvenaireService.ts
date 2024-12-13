@@ -20,9 +20,17 @@ async function getAll(): Promise<IJoueur[]> {
  * Récupère un joueur par son nom.
  */
 async function getByName(nom: string): Promise<IJoueur | null> {
-    return JoueurModel.findOne({ nomJoueur: nom }).exec(); // Assurez-vous que "nomJoueur" correspond au bon champ
-  }
+  return JoueurModel.findOne({ nomJoueur: nom }).exec();
+}
 
+async function getByVersion(version: number): Promise<IJoueur[]> {
+  const joueurs = await JoueurModel.find({ versionMinecraft: version }).exec();
+  return joueurs || [];  // Retourne un tableau vide si aucun joueur n'est trouvé
+}
+
+async function getById(id: string): Promise<IJoueur | null> {
+  return JoueurModel.findById(id).exec();
+}
 /**
  * Ajoute un joueur.
  */
@@ -34,8 +42,8 @@ async function add(joueur: IJoueur): Promise<void> {
 /**
  * Met à jour un joueur.
  */
-async function update(joueur: IJoueur): Promise<void> {
-  await JoueurModel.findByIdAndUpdate(joueur._id, joueur).exec();
+async function update(joueur: IJoueur,id:string): Promise<void> {
+  await JoueurModel.findByIdAndUpdate(id, joueur).exec();
 }
 
 /**
@@ -49,6 +57,8 @@ export default {
   persists,
   getAll,
   getByName,
+  getById,
+  getByVersion,
   add,
   update,
   delete: delete_,
