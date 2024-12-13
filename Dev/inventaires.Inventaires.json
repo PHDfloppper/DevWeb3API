@@ -1,0 +1,539 @@
+[{
+  "_id": {
+    "$oid": "66ed6c7442b06d0e077eb3db"
+  },
+  "nomJoueur": "Alex",
+  "versionMinecraft": "1.16.5",
+  "inventaire": {
+    "blocs": [
+      {
+        "type": "Netherrack",
+        "quantité": 100
+      },
+      {
+        "type": "Bloc de quartz",
+        "quantité": 45
+      },
+      {
+        "type": "Brique du Nether",
+        "quantité": 10
+      }
+    ],
+    "outils": [
+      {
+        "type": "Épée",
+        "matériau": "Netherite",
+        "durabilité": 2031
+      },
+      {
+        "type": "Pioche",
+        "matériau": "Diamant",
+        "durabilité": 1561
+      }
+    ]
+  },
+  "succès": [
+    {
+      "nom": "Dans le Nether",
+      "description": "Construire et entrer dans un portail du Nether",
+      "dateObtention": "2023-02-03T12:22:00Z"
+    },
+    {
+      "nom": "Toujours plus profond",
+      "description": "Atteindre le Nether",
+      "dateObtention": "2023-02-03T13:05:00Z"
+    }
+  ],
+  "heuresJeu": 50,
+  "modeHardcore": true
+},
+{
+  "_id": {
+    "$oid": "66ed6c7442b06d0e077eb3dc"
+  },
+  "nomJoueur": "Herobrine",
+  "versionMinecraft": "1.19.0",
+  "inventaire": {
+    "blocs": [
+      {
+        "type": "Obsidienne",
+        "quantité": 64
+      },
+      {
+        "type": "Bloc d'or",
+        "quantité": 10
+      },
+      {
+        "type": "Débris antiques",
+        "quantité": 5
+      }
+    ],
+    "outils": [
+      {
+        "type": "Hache",
+        "matériau": "Netherite",
+        "durabilité": 2031
+      },
+      {
+        "type": "Houe",
+        "matériau": "Diamant",
+        "durabilité": 1561
+      },
+      {
+        "type": "Épée",
+        "matériau": "Netherite",
+        "durabilité": 2031
+      }
+    ]
+  },
+  "succès": [
+    {
+      "nom": "La fin ?",
+      "description": "Entrer dans le portail de l'End",
+      "dateObtention": "2023-03-21T19:18:00Z"
+    },
+    {
+      "nom": "Libérer l'End",
+      "description": "Tuer l'Ender Dragon",
+      "dateObtention": "2023-03-21T19:45:00Z"
+    }
+  ],
+  "heuresJeu": 120,
+  "modeHardcore": true
+},
+{
+  "_id": {
+    "$oid": "66ed6c7442b06d0e077eb3dd"
+  },
+  "nomJoueur": "Notch",
+  "versionMinecraft": "1.12.2",
+  "inventaire": {
+    "blocs": [
+      {
+        "type": "Bloc d'émeraude",
+        "quantité": 50
+      },
+      {
+        "type": "Bloc de redstone",
+        "quantité": 30
+      },
+      {
+        "type": "Roche mère",
+        "quantité": 1
+      }
+    ],
+    "outils": [
+      {
+        "type": "Épée",
+        "matériau": "Or",
+        "durabilité": 32
+      },
+      {
+        "type": "Pioche",
+        "matériau": "Diamant",
+        "durabilité": 1561
+      },
+      {
+        "type": "Hache",
+        "matériau": "Bois",
+        "durabilité": 59
+      }
+    ]
+  },
+  "succès": [
+    {
+      "nom": "Surchargé",
+      "description": "Manger une pomme enchantée",
+      "dateObtention": "2023-04-10T10:22:00Z"
+    },
+    {
+      "nom": "Fait un phare",
+      "description": "Construire et activer un phare",
+      "dateObtention": "2023-04-10T12:33:00Z"
+    }
+  ],
+  "heuresJeu": 75,
+  "modeHardcore": false
+},
+{
+  "_id": {
+    "$oid": "66ed6c7442b06d0e077eb3de"
+  },
+  "nomJoueur": "EnderKnight",
+  "versionMinecraft": "1.17.1",
+  "inventaire": {
+    "blocs": [
+      {
+        "type": "End Stone",
+        "quantité": 64
+      },
+      {
+        "type": "Bloc de fer",
+        "quantité": 15
+      },
+      {
+        "type": "Poussière de redstone",
+        "quantité": 30
+      }
+    ],
+    "outils": [
+      {
+        "type": "Arc",
+        "matériau": "Bois",
+        "durabilité": 384
+      },
+      {
+        "type": "Trident",
+        "matériau": "Or",
+        "durabilité": 250
+      },
+      {
+        "type": "Pioche",
+        "matériau": "Diamant",
+        "durabilité": 1561
+      }
+    ]
+  },
+  "succès": [
+    {
+      "nom": "La dernière dimension",
+      "description": "Entrer dans l'End",
+      "dateObtention": "2023-04-20T15:48:00Z"
+    },
+    {
+      "nom": "L'ultime combat",
+      "description": "Battre l'Ender Dragon",
+      "dateObtention": "2023-04-21T16:22:00Z"
+    }
+  ],
+  "heuresJeu": 85,
+  "modeHardcore": false
+},
+{
+  "_id": {
+    "$oid": "66ed6cbb42b06d0e077eb3e0"
+  },
+  "nomJoueur": "CreeperMaster",
+  "versionMinecraft": "1.14.4",
+  "inventaire": {
+    "blocs": [
+      {
+        "type": "TNT",
+        "quantité": 20
+      },
+      {
+        "type": "Gravier",
+        "quantité": 50
+      },
+      {
+        "type": "Bloc de sable",
+        "quantité": 30
+      }
+    ],
+    "outils": [
+      {
+        "type": "Épée",
+        "matériau": "Fer",
+        "durabilité": 250
+      },
+      {
+        "type": "Pioche",
+        "matériau": "Fer",
+        "durabilité": 250
+      }
+    ]
+  },
+  "succès": [
+    {
+      "nom": "BOOM !",
+      "description": "Faire exploser du TNT",
+      "dateObtention": "2023-07-15T10:30:00Z"
+    },
+    {
+      "nom": "Déblayage",
+      "description": "Faire exploser une grande zone",
+      "dateObtention": "2023-07-15T11:45:00Z"
+    }
+  ],
+  "heuresJeu": 45,
+  "modeHardcore": false
+},
+{
+  "_id": {
+    "$oid": "66ed6cbb42b06d0e077eb3e1"
+  },
+  "nomJoueur": "BuilderPro",
+  "versionMinecraft": "1.18.1",
+  "inventaire": {
+    "blocs": [
+      {
+        "type": "Bloc de pierre",
+        "quantité": 128
+      },
+      {
+        "type": "Brique",
+        "quantité": 80
+      },
+      {
+        "type": "Verre",
+        "quantité": 40
+      }
+    ],
+    "outils": [
+      {
+        "type": "Pioche",
+        "matériau": "Diamant",
+        "durabilité": 1561
+      },
+      {
+        "type": "Hache",
+        "matériau": "Fer",
+        "durabilité": 250
+      },
+      {
+        "type": "Pelle",
+        "matériau": "Or",
+        "durabilité": 32
+      }
+    ]
+  },
+  "succès": [
+    {
+      "nom": "Architecte",
+      "description": "Construire une maison en plusieurs matériaux",
+      "dateObtention": "2023-08-01T09:20:00Z"
+    },
+    {
+      "nom": "Maître constructeur",
+      "description": "Construire un grand bâtiment",
+      "dateObtention": "2023-08-01T12:45:00Z"
+    }
+  ],
+  "heuresJeu": 60,
+  "modeHardcore": false
+},
+{
+  "_id": {
+    "$oid": "66ed6cbb42b06d0e077eb3e2"
+  },
+  "nomJoueur": "OceanExplorer",
+  "versionMinecraft": "1.13.2",
+  "inventaire": {
+    "blocs": [
+      {
+        "type": "Sable",
+        "quantité": 64
+      },
+      {
+        "type": "Gravier",
+        "quantité": 32
+      },
+      {
+        "type": "Prismarine",
+        "quantité": 10
+      }
+    ],
+    "outils": [
+      {
+        "type": "Trident",
+        "matériau": "Prismarine",
+        "durabilité": 250
+      },
+      {
+        "type": "Épée",
+        "matériau": "Diamant",
+        "durabilité": 1561
+      }
+    ]
+  },
+  "succès": [
+    {
+      "nom": "Explorateur sous-marin",
+      "description": "Découvrir un temple sous-marin",
+      "dateObtention": "2023-08-25T15:00:00Z"
+    },
+    {
+      "nom": "Conquérant des mers",
+      "description": "Tuer le Gardien aîné",
+      "dateObtention": "2023-08-25T16:30:00Z"
+    }
+  ],
+  "heuresJeu": 55,
+  "modeHardcore": false
+},
+{
+  "_id": {
+    "$oid": "66ed6cbb42b06d0e077eb3e3"
+  },
+  "nomJoueur": "PotionMaster",
+  "versionMinecraft": "1.12.2",
+  "inventaire": {
+    "blocs": [
+      {
+        "type": "Stand à potions",
+        "quantité": 1
+      },
+      {
+        "type": "Nether Wart",
+        "quantité": 20
+      },
+      {
+        "type": "Bouteille d'eau",
+        "quantité": 10
+      }
+    ],
+    "outils": [
+      {
+        "type": "Hache",
+        "matériau": "Or",
+        "durabilité": 32
+      },
+      {
+        "type": "Pioche",
+        "matériau": "Fer",
+        "durabilité": 250
+      }
+    ]
+  },
+  "succès": [
+    {
+      "nom": "Apprenti alchimiste",
+      "description": "Fabriquer une potion",
+      "dateObtention": "2023-09-10T14:15:00Z"
+    },
+    {
+      "nom": "Maître des potions",
+      "description": "Créer une potion de niveau supérieur",
+      "dateObtention": "2023-09-10T16:40:00Z"
+    }
+  ],
+  "heuresJeu": 30,
+  "modeHardcore": false
+},
+{
+  "_id": {
+    "$oid": "66ed6cbb42b06d0e077eb3e4"
+  },
+  "nomJoueur": "FarmerJohn",
+  "versionMinecraft": "1.17.1",
+  "inventaire": {
+    "blocs": [
+      {
+        "type": "Bloc de terre",
+        "quantité": 64
+      },
+      {
+        "type": "Foin",
+        "quantité": 40
+      },
+      {
+        "type": "Bloc de bois",
+        "quantité": 30
+      }
+    ],
+    "outils": [
+      {
+        "type": "Houe",
+        "matériau": "Diamant",
+        "durabilité": 1561
+      },
+      {
+        "type": "Hache",
+        "matériau": "Fer",
+        "durabilité": 250
+      }
+    ]
+  },
+  "succès": [
+    {
+      "nom": "À la ferme",
+      "description": "Planter et récolter des cultures",
+      "dateObtention": "2023-09-18T08:45:00Z"
+    },
+    {
+      "nom": "Producteur de masse",
+      "description": "Récolter 100 unités de blé",
+      "dateObtention": "2023-09-18T10:00:00Z"
+    }
+  ],
+  "heuresJeu": 40,
+  "modeHardcore": false
+},
+{
+  "_id": {
+    "$oid": "66f45cc03d520c7ef42fec85"
+  },
+  "nomJoueur": "Test!!!!",
+  "versionMinecraft": "1.16.5",
+  "inventaire": {
+    "blocs": [
+      {
+        "type": "Netherrack",
+        "quantite": 100,
+        "_id": {
+          "$oid": "66f45cc03d520c7ef42fec87"
+        }
+      },
+      {
+        "type": "Bloc de quartz",
+        "quantite": 45,
+        "_id": {
+          "$oid": "66f45cc03d520c7ef42fec88"
+        }
+      },
+      {
+        "type": "Brique du Nether",
+        "quantite": 10,
+        "_id": {
+          "$oid": "66f45cc03d520c7ef42fec89"
+        }
+      }
+    ],
+    "outils": [
+      {
+        "type": "Épée",
+        "materiau": "Netherite",
+        "durabilite": 2031,
+        "_id": {
+          "$oid": "66f45cc03d520c7ef42fec8a"
+        }
+      },
+      {
+        "type": "Pioche",
+        "materiau": "Diamant",
+        "durabilite": 1561,
+        "_id": {
+          "$oid": "66f45cc03d520c7ef42fec8b"
+        }
+      }
+    ],
+    "_id": {
+      "$oid": "66f45cc03d520c7ef42fec86"
+    }
+  },
+  "succes": [
+    {
+      "nom": "Dans le Nether",
+      "description": "Construire et entrer dans un portail du Nether",
+      "dateObtention": {
+        "$date": "2023-02-03T12:22:00.000Z"
+      },
+      "_id": {
+        "$oid": "66f45cc03d520c7ef42fec8c"
+      }
+    },
+    {
+      "nom": "Toujours plus profond",
+      "description": "Atteindre le Nether",
+      "dateObtention": {
+        "$date": "2023-02-03T13:05:00.000Z"
+      },
+      "_id": {
+        "$oid": "66f45cc03d520c7ef42fec8d"
+      }
+    }
+  ],
+  "heuresJeu": 50,
+  "modeHardcore": true,
+  "__v": 0
+}]
