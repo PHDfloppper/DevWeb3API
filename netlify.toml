@@ -5,7 +5,7 @@
     external_node_modules = ["express"]
     node_bundler = "esbuild"
     # Ajout de la documentation de l'interface logicielle
-    included_files = ["env/development.env", "./functions/index.html"]
+    included_files = ["env/development.env", "./functions/index.html","openapi.yaml"]
 [[redirects]]
     force = true
     from = "/*"
